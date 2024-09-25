@@ -12,6 +12,20 @@ steps:
       - '--cache-from'
       - 'asia-south1-docker.pkg.dev/data-region-436609-j6/sample-nest-js/sample-nest-be:latest'
       - '.'
+
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    args:
+      [
+        gcloud,
+        compute,
+        instance-groups,
+        managed,
+        rolling-action,
+        restart,
+        sample-nest-js-ig,
+        --zone=asia-south1-c,
+      ]
+
 images:
   - 'asia-south1-docker.pkg.dev/data-region-436609-j6/sample-nest-js/sample-nest-be:latest'
 options:
